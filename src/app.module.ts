@@ -4,15 +4,17 @@ import { ContentManagementService } from './core/services/content-management.ser
 import { MediaPlayerService } from './core/services/media-player.service';
 import { PrismaService } from './persistence/prisma/prisma.service';
 import { ContentRepository } from './persistence/repository/content.repository';
+import { VideoRepository } from './persistence/repository/video.repository';
 
 @Module({
-    imports: [],
-    controllers: [ContentController],
-    providers: [
-        ContentManagementService,
-        MediaPlayerService,
-        PrismaService,
-        ContentRepository,
-    ],
+  imports: [],
+  controllers: [ContentController],
+  providers: [
+    ContentManagementService,
+    MediaPlayerService,
+    PrismaService,
+    ContentRepository,
+    VideoRepository,
+  ],
 })
-export class AppModule { }
+export class AppModule {}

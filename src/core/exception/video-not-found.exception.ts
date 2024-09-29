@@ -1,3 +1,3 @@
-import { DomainException } from "./domain.expection";
+import { DomainException } from './domain.expection';
 
-export class VideoNotFoundException extends DomainException 
+export class VideoNotFoundException extends DomainException {}
