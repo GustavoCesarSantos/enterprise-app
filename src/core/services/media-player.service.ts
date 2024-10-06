@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 
 import { VideoNotFoundException } from '@src/core/exception/video-not-found.exception';
-import { VideoRepository } from '@src/persistence/repository/video.repository';
+import { VideoRepository } from '@src/persistence/prisma/repository/video.repository';
 
 @Injectable()
 export class MediaPlayerService {

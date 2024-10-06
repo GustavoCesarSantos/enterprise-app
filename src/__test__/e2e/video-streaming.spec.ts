@@ -1,11 +1,10 @@
 import { HttpStatus, INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { AppModule } from '@src/app.module';
+import { ContentManagementService } from '@src/core/services/content-management.service';
+import { VideoRepository } from '@src/persistence/typeorm/repository/video.repository';
 import fs from 'fs';
 import request from 'supertest';
-
-import { ContentManagementService } from '@src/core/services/content-management.service';
-import { VideoRepository } from '@src/persistence/repository/video.repository';
 
 describe('ContentController (e2e)', () => {
   let module: TestingModule;
@@ -34,7 +33,7 @@ describe('ContentController (e2e)', () => {
   });
 
   afterEach(async () => {
-    await videoRepository.clear();
+    await videoRepository.deleteAll();
   });
 
   afterAll(async () => {
