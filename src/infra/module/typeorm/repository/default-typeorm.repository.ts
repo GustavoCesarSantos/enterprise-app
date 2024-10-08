@@ -1,6 +1,13 @@
-import { DataSource, EntityTarget, ObjectLiteral, Repository } from 'typeorm';
+import {
+  DataSource,
+  EntityTarget,
+  FindOptionsWhere,
+  Repository,
+} from 'typeorm';
 
-export abstract class DefaultTypeOrmRepository<T extends ObjectLiteral> {
+import { DefaultEntity } from '@src/infra/module/typeorm/entity/default.entity';
+
+export abstract class DefaultTypeOrmRepository<T extends DefaultEntity<T>> {
   private repository: Repository<T>;
   constructor(
     readonly entity: EntityTarget<T>,
@@ -15,6 +22,12 @@ export abstract class DefaultTypeOrmRepository<T extends ObjectLiteral> {
 
   async save(entity: T): Promise<T> {
     return await this.repository.save(entity);
+  }
+
+  async findOneById(id: string): Promise<T | null> {
+    return this.repository.findOne({
+      where: { id } as FindOptionsWhere<T>,
+    });
   }
 
   /**
